@@ -7,9 +7,14 @@
         <img class="spin" src="{% static "images/orbit.png" %}" alt="Sterexy"/>
     </li>
     <li class="layer" data-depth="0.7">
-        <img class="stext" src="{% static "images/stext.png" %}" alt="Sterexy"/>
+        <img class="stext" src="{% static "images/stext_tr.png" %}" alt="Sterexy"/>
     </li>
 </ul>
+<style type="text/css">
+    body {
+        background-image: url('http://apod.nasa.gov/apod/{{ href }}');
+    }
+</style>
 
 <script src="{% static "js/jquery-1.10.2.min.js" %}"></script>
 <script src="{% static "js/jquery.parallax.js" %}" type="text/javascript" charset="utf-8"></script>
