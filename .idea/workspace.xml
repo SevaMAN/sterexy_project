@@ -2,14 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="84246e44-d3b0-45e6-b6b5-afb57af1a893" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sterexy_project/settings.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sterexy/templates/index.html" afterPath="$PROJECT_DIR$/sterexy/templates/index.html" />
     </list>
     <ignored path="sterexy_project.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/settings.py" changelist="84246e44-d3b0-45e6-b6b5-afb57af1a893" time="1383064237527" ignored="false" />
     <file path="/urls.py" changelist="84246e44-d3b0-45e6-b6b5-afb57af1a893" time="1383063919176" ignored="false" />
     <file path="/views.py" changelist="84246e44-d3b0-45e6-b6b5-afb57af1a893" time="1383050451853" ignored="false" />
-    <file path="/index.html" changelist="84246e44-d3b0-45e6-b6b5-afb57af1a893" time="1383062179813" ignored="false" />
+    <file path="/index.html" changelist="84246e44-d3b0-45e6-b6b5-afb57af1a893" time="1383066764939" ignored="false" />
     <file path="/Python Console" changelist="84246e44-d3b0-45e6-b6b5-afb57af1a893" time="1383050726905" ignored="false" />
     <file path="/style.css" changelist="84246e44-d3b0-45e6-b6b5-afb57af1a893" time="1383059571492" ignored="false" />
     <file path="/a.dummy" changelist="84246e44-d3b0-45e6-b6b5-afb57af1a893" time="1383059181528" ignored="false" />
@@ -73,7 +73,7 @@
       <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sterexy/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="99" selection-start="422" selection-end="422" vertical-scroll-proportion="0.28156996">
+            <state line="9" column="44" selection-start="337" selection-end="337" vertical-scroll-proportion="0.23037542">
               <folding />
             </state>
           </provider>
@@ -607,7 +607,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sterexy/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="99" selection-start="422" selection-end="422" vertical-scroll-proportion="0.28156996">
+        <state line="9" column="44" selection-start="337" selection-end="337" vertical-scroll-proportion="0.23037542">
           <folding />
         </state>
       </provider>
