@@ -4,10 +4,10 @@
 
 <ul class="wrap">
     <li class="layer" data-depth="1.00">
-        <img src="{% static "images/orbit.png" %}" alt="Sterexy"/>
+        <img class="spin" src="{% static "images/orbit.png" %}" alt="Sterexy"/>
     </li>
-    <li class="layer" data-depth="0.4">
-        <img src="{% static "images/sterexy.png" %}" alt="Sterexy"/>
+    <li class="layer" data-depth="0.7">
+        <img class="stext" src="{% static "images/stext.png" %}" alt="Sterexy"/>
     </li>
 </ul>
 
@@ -24,10 +24,10 @@
             invertY: true,
             limitX: false,
             limitY: 10,
-            scalarX: 2,
-            scalarY: 10,
-            frictionX:0.04,
-            frictionY: 0.01
+            scalarX: 1,
+            scalarY: 2,
+            frictionX:0.2,
+            frictionY: 0.2
         });
     });
 </script>
