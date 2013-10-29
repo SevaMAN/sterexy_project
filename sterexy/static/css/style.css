@@ -1,0 +1,30 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.wrap {
+    text-align: center;
+    overflow: hidden;
+    height: 90%;
+}
+
+.wrap img {
+    height: 100%;
+    -webkit-animation: rotator 10s infinite linear;
+    -moz-animation: rotator 10s infinite linear;
+    -o-animation: rotator 10s infinite linear;
+}
+
+@-webkit-keyframes rotator {
+    from { -webkit-transform: rotate(360deg); }
+    to { -webkit-transform: rotate(0deg); }
+}
+@-moz-keyframes rotator {
+    from { -moz-transform: rotate(360deg)  }
+    to { -moz-transform: rotate(0deg)  }
+}
+@-o-keyframes rotator {
+    from { -o-transform: rotate(360deg); }
+    to { -o-transform: rotate(0deg); }
+}

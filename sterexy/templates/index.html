@@ -1,0 +1,30 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" href="{% static "css/style.css" %}" type="text/css" media="screen" />
+
+<ul class="wrap">
+    <li class="layer" data-depth="1.00">
+        <img src="{% static "images/logo.jpg" %}" alt="Sterexy"/>
+    </li>
+</ul>
+
+<script src="{% static "js/jquery-1.10.2.min.js" %}"></script>
+<script src="{% static "js/jquery.parallax.js" %}" type="text/javascript" charset="utf-8"></script>
+<script src="{% static "js/parallax.js" %}" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function(){
+        $('.wrap').parallax({
+            calibrateX: false,
+            calibrateY: true,
+            invertX: false,
+            invertY: true,
+            limitX: false,
+            limitY: 10,
+            scalarX: 6,
+            scalarY: 10,
+            frictionX:0.1,
+            frictionY: 0.05
+        });
+    });
+</script>
