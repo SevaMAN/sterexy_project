@@ -1,35 +1,30 @@
+{% extends "main.html" %}
+
 {% load staticfiles %}
 
+{% block styles %}
 <link rel="stylesheet" href="{% static "css/style.css" %}" type="text/css" media="screen" />
+<style type="text/css">
+    body {
+        background-image: url('http://apod.nasa.gov/apod/{{ href }}');
+    }
+</style>
+<script src="{% static "js/jquery-1.10.2.min.js" %}"></script>
+{% endblock %}
 
-<ul id="wrap" class="wrap" 
-    data-calibrate-x="true"
-    data-calibrate-y="true"
-    data-invert-x="false"
-    data-invert-y="true"
-    data-limit-x="false"
-    data-limit-y="false"
-    data-scalar-x="2"
-    data-scalar-y="6"
-    data-friction-x="0.1"
-    data-friction-y="0.2">
+{% block content %}
+<ul id="wrap" class="wrap" data-calibrate-x="true" data-calibrate-y="true" data-invert-x="false" data-invert-y="true" data-limit-x="false" data-limit-y="false" data-scalar-x="2" data-scalar-y="6" data-friction-x="0.1" data-friction-y="0.2">
     <li class="layer" data-depth="0"></li>
     <li class="layer" data-depth="0.40"><img class="spin shadow" src="{% static "images/logo/orbit-shadow.png" %}" alt="Sterexy"/></li>
     <li class="layer" data-depth="0.70"><img class="spin" src="{% static "images/logo/orbit.png" %}" alt="Sterexy"/></li>
     <li class="layer" data-depth="0.60"><img class="text shadow" src="{% static "images/logo/text-shadow.png" %}" alt="Sterexy"/></li>
     <li class="layer" data-depth="1.00"><img class="text" src="{% static "images/logo/text.png" %}" alt="Sterexy"/></li>
 </ul>
-<style type="text/css">
-    body {
-        background-image: url('http://apod.nasa.gov/apod/{{ href }}');
-    }
-</style>
 
-<script src="{% static "js/jquery-1.10.2.min.js" %}"></script>
 <script src="{% static "js/parallax.js" %}" type="text/javascript" charset="utf-8"></script>
-
 <script type="text/javascript" charset="utf-8">
     $(document).ready(function(){
         var parallax = new Parallax(document.getElementById('wrap'));
     });
 </script>
+{% endblock %}
