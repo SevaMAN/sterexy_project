@@ -2,12 +2,22 @@
 
 <link rel="stylesheet" href="{% static "css/style.css" %}" type="text/css" media="screen" />
 
-<ul class="wrap">
-    <li class="layer" data-depth="1.00">
-        <img class="spin" src="{% static "images/orbit.png" %}" alt="Sterexy"/>
-    </li>
+<ul id="wrap" class="wrap" 
+    data-calibrate-x="true"
+    data-calibrate-y="true"
+    data-invert-x="false"
+    data-invert-y="true"
+    data-limit-x="false"
+    data-limit-y="0"
+    data-scalar-x="2"
+    data-scalar-y="0"
+    data-friction-x="0.1"
+    data-friction-y="0">
     <li class="layer" data-depth="0.7">
-        <img class="stext" src="{% static "images/stext_tr.png" %}" alt="Sterexy"/>
+        <img class="spin" src="{% static "images/orbit_trs2.png" %}" alt="Sterexy"/>
+    </li>
+    <li class="layer" data-depth="1.00">
+        <img class="stext" src="{% static "images/stext_trs.png" %}" alt="Sterexy"/>
     </li>
 </ul>
 <style type="text/css">
@@ -17,22 +27,10 @@
 </style>
 
 <script src="{% static "js/jquery-1.10.2.min.js" %}"></script>
-<script src="{% static "js/jquery.parallax.js" %}" type="text/javascript" charset="utf-8"></script>
 <script src="{% static "js/parallax.js" %}" type="text/javascript" charset="utf-8"></script>
 
 <script type="text/javascript" charset="utf-8">
     $(document).ready(function(){
-        $('.wrap').parallax({
-            calibrateX: false,
-            calibrateY: true,
-            invertX: false,
-            invertY: true,
-            limitX: false,
-            limitY: 10,
-            scalarX: 1,
-            scalarY: 2,
-            frictionX:0.2,
-            frictionY: 0.2
-        });
+        var parallax = new Parallax(document.getElementById('wrap'));
     });
 </script>
