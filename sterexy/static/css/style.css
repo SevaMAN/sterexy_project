@@ -22,18 +22,13 @@ body:before {
     height: 85%;
 }
 
-.spin {
-    left: 32%;
-    height: 340px;
+.shadow {
+    padding: 0.5% 0 0 0.5%;
 }
 
-.stext{
-    height: 135px;
-    padding-top: 118px;
-    left: 34.5%;
-}
-
-.stext, .spin {
+.text, .spin {
     top:25%;
+    left: 33%;
+    height: 50%;
     position: absolute;
 }
