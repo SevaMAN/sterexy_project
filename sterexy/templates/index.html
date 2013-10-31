@@ -13,7 +13,7 @@
 {% endblock %}
 
 {% block content %}
-<ul id="wrap" class="wrap" data-calibrate-x="true" data-calibrate-y="true" data-invert-x="false" data-invert-y="true" data-limit-x="false" data-limit-y="false" data-scalar-x="2" data-scalar-y="6" data-friction-x="0.1" data-friction-y="0.2">
+<ul id="wrap" data-calibrate-x="false" data-calibrate-y="false" data-invert-x="false" data-invert-y="true" data-limit-x="false" data-limit-y="false" data-scalar-x="2" data-scalar-y="6" data-friction-x="0.1" data-friction-y="0.2">
     <li class="layer" data-depth="0"></li>
     <li class="layer" data-depth="0.40"><img class="spin shadow" src="{% static "images/logo/orbit-shadow.png" %}" alt="Sterexy"/></li>
     <li class="layer" data-depth="0.70"><img class="spin" src="{% static "images/logo/orbit.png" %}" alt="Sterexy"/></li>
@@ -25,6 +25,31 @@
 <script type="text/javascript" charset="utf-8">
     $(document).ready(function(){
         var parallax = new Parallax(document.getElementById('wrap'));
+        var ww = 0,
+            wh = 0,
+            rt = -1;
+
+        $(window).resize(function(){
+
+            var onResize = function() {
+                var img = $('.layer img'),
+                    w = img.width(),
+                    h = img.height();
+                img.css('margin-top', -parseInt(h)/2);
+                img.css('margin-left', -parseInt(w)/2);
+            }
+
+            var nww = $(window).width(),
+                nwh = $(window).height();
+
+            if(ww!=nww || wh!=nwh) {
+                window.clearTimeout(rt);
+                rt = window.setTimeout(onResize, 10);
+            }
+
+            ww = nww;
+            wh = nwh;
+        }).trigger('resize');
     });
 </script>
 {% endblock %}
