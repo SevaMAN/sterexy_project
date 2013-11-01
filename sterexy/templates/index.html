@@ -6,7 +6,8 @@
 <link rel="stylesheet" href="{% static "css/style.css" %}" type="text/css" media="screen" />
 <style type="text/css">
     body {
-        background-image: url('http://apod.nasa.gov/apod/{{ href }}');
+        {% comment %}background-image: url('http://apod.nasa.gov/apod/{{ href }}');{% endcomment %}
+        background-image: url("{% static "images/src.jpg" %}");
     }
 </style>
 <script src="{% static "js/jquery-1.10.2.min.js" %}"></script>
@@ -30,12 +31,56 @@
             rt = -1;
 
         var staticpref = '{% static "images/logo/" %}',
-            spinsrc = [ staticpref+"orbit.png" , staticpref+"orbit_w.png"],
+            spinsrc = [staticpref+"orbit.png", staticpref+"orbit_w.png"],
             textsrc = [staticpref+"text.png", staticpref+"text_w.png"];
 
         $(document).on('click',function(){
             $(".spin.dry").attr('src',spinsrc.reverse()[0]);
             $(".text.dry").attr('src',textsrc.reverse()[0]);
+        });
+
+        function getImageLightness(imageSrc,callback) {
+            var img = document.createElement("img");
+            img.src = imageSrc;
+            img.style.display = "none";
+            document.body.appendChild(img);
+
+            var colorSum = 0;
+
+            img.onload = function() {
+                var canvas = document.createElement("canvas");
+                canvas.width = this.width;
+                canvas.height = this.height;
+
+                var ctx = canvas.getContext("2d");
+                ctx.drawImage(this,0,0);
+
+                var imageData = ctx.getImageData(0,0,canvas.width,canvas.height);
+                var data = imageData.data;
+                var r,g,b,avg;
+
+                for(var x = 0, len = data.length; x < len; x+=4) {
+                    r = data[x];
+                    g = data[x+1];
+                    b = data[x+2];
+
+                    avg = Math.floor((r+g+b)/3);
+                    colorSum += avg;
+                }
+
+                var brightness = Math.floor(colorSum / (this.width*this.height));
+                callback(brightness);
+            }
+        }
+
+        getImageLightness($('body').css('background-image').replace(/url\(|\)$/ig,""),function(brightness){
+            if (brightness < 70){
+                $(".spin.dry").attr('src',staticpref+"orbit_w.png");
+                $(".text.dry").attr('src',staticpref+"text_w.png");
+            } else {
+                $(".spin.dry").attr('src',staticpref+"orbit.png");
+                $(".text.dry").attr('src',staticpref+"text.png");
+            }
         });
 
         $(window).resize(function(){
