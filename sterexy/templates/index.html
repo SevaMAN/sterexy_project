@@ -13,12 +13,12 @@
 {% endblock %}
 
 {% block content %}
-<ul id="wrap" data-calibrate-x="false" data-calibrate-y="false" data-invert-x="false" data-invert-y="true" data-limit-x="false" data-limit-y="false" data-scalar-x="2" data-scalar-y="6" data-friction-x="0.1" data-friction-y="0.2">
+<ul id="wrap" data-calibrate-x="false" data-calibrate-y="false" data-invert-x="true" data-invert-y="true" data-limit-x="false" data-limit-y="false" data-scalar-x="2" data-scalar-y="6" data-friction-x="0.1" data-friction-y="0.2">
     <li class="layer" data-depth="0"></li>
     <li class="layer" data-depth="0.40"><img class="spin shadow" src="{% static "images/logo/orbit-shadow.png" %}" alt="Sterexy"/></li>
-    <li class="layer" data-depth="0.70"><img class="spin" src="{% static "images/logo/orbit.png" %}" alt="Sterexy"/></li>
+    <li class="layer" data-depth="0.70"><img class="spin dry" src="{% static "images/logo/orbit.png" %}" alt="Sterexy"/></li>
     <li class="layer" data-depth="0.60"><img class="text shadow" src="{% static "images/logo/text-shadow.png" %}" alt="Sterexy"/></li>
-    <li class="layer" data-depth="1.00"><img class="text" src="{% static "images/logo/text.png" %}" alt="Sterexy"/></li>
+    <li class="layer" data-depth="1.00"><img class="text dry" src="{% static "images/logo/text.png" %}" alt="Sterexy"/></li>
 </ul>
 
 <script src="{% static "js/parallax.js" %}" type="text/javascript" charset="utf-8"></script>
@@ -29,20 +29,31 @@
             wh = 0,
             rt = -1;
 
+        var staticpref = '{% static "images/logo/" %}',
+            spinsrc = [ staticpref+"orbit.png" , staticpref+"orbit_w.png"],
+            textsrc = [staticpref+"text.png", staticpref+"text_w.png"];
+
+        $(document).on('click',function(){
+            $(".spin.dry").attr('src',spinsrc.reverse()[0]);
+            $(".text.dry").attr('src',textsrc.reverse()[0]);
+        });
+
         $(window).resize(function(){
 
             var onResize = function() {
                 var img = $('.layer img'),
                     w = img.width(),
                     h = img.height();
-                img.css('margin-top', -parseInt(h)/2);
-                img.css('margin-left', -parseInt(w)/2);
+                img.css({
+                    'margin-top':-parseInt(h)/2,
+                    'margin-left':-parseInt(w)/2
+                });
             }
 
             var nww = $(window).width(),
                 nwh = $(window).height();
 
-            if(ww!=nww || wh!=nwh) {
+            if (ww!=nww || wh!=nwh) {
                 window.clearTimeout(rt);
                 rt = window.setTimeout(onResize, 10);
             }
