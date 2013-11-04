@@ -1,5 +1,7 @@
 from django.db import models
 from django.core.files import File
+from django.dispatch import receiver
+
 import os
 import urllib
 
@@ -11,7 +13,7 @@ class Background(models.Model):
 
     image_file = models.ImageField(upload_to='sterexy/static/images/')
     image_url = models.URLField()
-    im_date = models.DateField()
+    im_date = models.DateTimeField()
 
     def get_remote_image(self):
         if self.image_url and not self.image_file:
@@ -21,3 +23,12 @@ class Background(models.Model):
                     File(open(result[0]))
                     )
             self.save()
+
+@receiver(models.signals.post_delete, sender=Background)
+def auto_delete_file_on_delete(sender, instance, **kwargs):
+    """Deletes file from filesystem
+    when corresponding `MediaFile` object is deleted.
+    """
+    if instance.image_file:
+        if os.path.isfile(instance.image_file.path):
+            os.remove(instance.image_file.path)
